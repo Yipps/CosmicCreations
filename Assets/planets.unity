@@ -167,7 +167,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f46fde82b946c6047ab1e1f5acb7e0f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5cb2eb628cfc01f46b9c1359f18a66c7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -269,7 +269,7 @@ RectTransform:
   - {fileID: 927492758}
   - {fileID: 1680515204}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 927492757}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7930277718baf0439f80e49010dc604, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f8ce7e2f2efb53499a2728068e8c70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   planet: {fileID: 1637027731}
@@ -616,8 +616,8 @@ MonoBehaviour:
   jupiter: {fileID: 1646875557}
   mars: {fileID: 938783962}
   scaleImages:
-  - {fileID: 1646875557}
   - {fileID: 124024924}
+  - {fileID: 1646875557}
   - {fileID: 938783962}
 --- !u!114 &927492760
 MonoBehaviour:
@@ -721,7 +721,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5042312183b385c4d9a22a253b65d518, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d7eb59dbf5e18847bc797c4336bb197, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -863,7 +863,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1637027730
 GameObject:
@@ -878,7 +878,7 @@ GameObject:
   - component: {fileID: 1637027732}
   - component: {fileID: 1637027731}
   m_Layer: 0
-  m_Name: planet
+  m_Name: NewPlanet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -892,13 +892,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1637027730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f90af2d39e70e74685768753fe37e57, type: 3}
+  m_Script: {fileID: 11500000, guid: 87468e6f49bd98f46b881928975ec66b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hydrogen: 1
-  helium: 1
-  carbon: 1
-  nitrogen: 1
+  hydrogen: 0
+  helium: 0
+  carbon: 0
+  nitrogen: 0
   radius: 0
   mass: 0
   distFromSun: 0
@@ -966,7 +966,7 @@ Transform:
   m_LocalScale: {x: 1.07, y: 0.98, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1646875555
 GameObject:
@@ -1022,7 +1022,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 06a0e489c8a22844db07f4188df4c62d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a7b5e9d057e6654383dd35ea51a2bde, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1083,8 +1083,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcac9826a0097d3498d41dbdaab975ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementTextbox: {fileID: 1680515206}
-  planet: {fileID: 1637027731}
 --- !u!114 &1680515206
 MonoBehaviour:
   m_ObjectHideFlags: 0
