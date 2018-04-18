@@ -6,7 +6,7 @@ public class PlanetInfo : MonoBehaviour {
     public float hydrogen;
     public float helium;
     public float carbon;
-    public float nitrogen;
+    public float iron;
     public float oxygen;
     public float neon;
     public float silicon;
