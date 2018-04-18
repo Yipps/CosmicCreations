@@ -22,6 +22,7 @@ public class PlanetInfo : MonoBehaviour {
 	void Update () {
         //expand(radius);
         Rotate();
+        distFromSun = DistFromSun();
 		
 	}
 
@@ -33,4 +34,10 @@ public class PlanetInfo : MonoBehaviour {
     void Rotate() {
         transform.Rotate(Vector3.right*Time.deltaTime*10); 
     }
+
+    float DistFromSun() {
+        float dist = transform.position.magnitude;
+        return dist;
+    }
+
 }
