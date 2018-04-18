@@ -31,9 +31,21 @@ public class Elements : MonoBehaviour {
         {
             elementTextbox.text += "C " + info.carbon + "\n";
         }
-        if (info.nitrogen != 0)
+        if (info.iron != 0)
         {
-            elementTextbox.text += "N " + info.nitrogen + "\n";
+            elementTextbox.text += "Fe " + info.iron + "\n";
+        }
+        if (info.oxygen != 0)
+        {
+            elementTextbox.text += "O " + info.oxygen + "\n";
+        }
+        if (info.neon != 0)
+        {
+            elementTextbox.text += "Ne " + info.neon + "\n";
+        }
+        if (info.silicon != 0)
+        {
+            elementTextbox.text += "Si " + info.silicon + "\n";
         }
     }
 }
