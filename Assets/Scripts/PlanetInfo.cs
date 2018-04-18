@@ -7,6 +7,9 @@ public class PlanetInfo : MonoBehaviour {
     public float helium;
     public float carbon;
     public float nitrogen;
+    public float oxygen;
+    public float neon;
+    public float silicon;
 
     public float radius;
     public float mass;
@@ -22,14 +25,12 @@ public class PlanetInfo : MonoBehaviour {
 	void Update () {
         //expand(radius);
         Rotate();
-        distFromSun = DistFromSun();
-		
+        distFromSun = DistFromSun();		
 	}
 
     void Expand (float rad){
         gameObject.transform.localScale = new Vector3(rad, rad,rad);
     }
-
 
     void Rotate() {
         transform.Rotate(Vector3.right*Time.deltaTime*10); 
