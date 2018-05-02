@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlanetController : MonoBehaviour {
+    enum InteractionMode {Scaling, ElementSelection, ElementAdding, CrossSection, Inactive}
+
 
     public PlanetInfo newPlanet;
     public Transform leftHand;
@@ -11,28 +13,35 @@ public class PlanetController : MonoBehaviour {
     public Transform rotateTransform;
     public Transform mask;
 
-    public bool isScaleable;
     public bool isLeftHandTracking { get; set; }
     public bool isRightHandTracking { get; set; }
 
+    private InteractionMode currentMode;
+    private bool isInUpdateModeCoroutine;
+    private IEnumerator UpdateModeCoroutine;
+
     Vector3 avgForward;
     Vector3 avgCross;
+    public float scaleSpeed;
 
-// Use this for initialization
-void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (isLeftHandTracking && isRightHandTracking)
-        {
+        if (currentMode == InteractionMode.Scaling)
             UpdateRadius();
-            UpdateRotation();
-        }else if (isRightHandTracking)
-        {
-            UpdateMask();
-        }
+
+        //if (isLeftHandTracking && isRightHandTracking)
+        //{
+        //    UpdateRadius();
+        //    UpdateRotation();
+        //}else if (isRightHandTracking)
+        //{
+        //    UpdateMask();
+        //}
 	}
 
     private void UpdateRotation()
@@ -65,7 +74,9 @@ void Start () {
         newPlanet.radius = normalizedRadius;
 
         float scaleFactor = normalizedRadius * 3 + 1;
-        newPlanet.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+
+        Vector3 targetScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        newPlanet.transform.localScale = Vector3.Lerp(newPlanet.transform.localScale, targetScale, scaleSpeed * Time.deltaTime);
     }
 
     private void UpdateMask()
@@ -83,9 +94,37 @@ void Start () {
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 200, 20), "Left Hand: " + leftHand.forward.ToString());
-        GUI.Label(new Rect(10, 30, 200, 20), "Right Hand: " + rightHand.forward.ToString());
-        GUI.Label(new Rect(10, 50, 200, 20), "Average: " + avgForward.ToString());
-        GUI.Label(new Rect(10, 70, 200, 20), "Cross: : " + avgCross.ToString());
+        GUI.Label(new Rect(10, 10, 200, 20), currentMode.ToString());
+    }
+
+    public IEnumerator UpdateInteractionMode()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        if (isLeftHandTracking && isRightHandTracking)
+        {
+            currentMode = InteractionMode.Scaling;
+        }
+        else if (isLeftHandTracking)
+        {
+            currentMode = InteractionMode.CrossSection;
+        }
+        else if(isRightHandTracking)
+        {
+            currentMode = InteractionMode.ElementSelection;
+            currentMode = InteractionMode.ElementAdding;
+        }
+        else
+        {
+            currentMode = InteractionMode.Inactive;
+        }
+    }
+
+    public void CheckHandTracking()
+    {
+        if (UpdateModeCoroutine != null)
+            StopCoroutine(UpdateModeCoroutine);
+        UpdateModeCoroutine = UpdateInteractionMode();
+        StartCoroutine(UpdateModeCoroutine);
     }
 }
