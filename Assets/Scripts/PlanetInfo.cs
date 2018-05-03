@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlanetInfo : MonoBehaviour {
+    public int[] elementArray = new int[7];
     public int hydrogen = 25;
     public int helium = 20;
     public int carbon = 15;
@@ -17,7 +19,7 @@ public class PlanetInfo : MonoBehaviour {
     public int totalSolids;
     public int someGases;
 
-    public int[] elementArray = new int[7];
+
     public int[] layerSizes = new int[3];
 
     public float radius;
@@ -54,9 +56,11 @@ public class PlanetInfo : MonoBehaviour {
 
     //total amt of elements
     void ProcessElements(){
-        total = hydrogen + helium + carbon + oxygen + neon + silicon + iron;
-        totalSolids = carbon + silicon + iron;
-        someGases = oxygen + neon;
+        total = elementArray.Sum();
+        //carbon + si + iron
+        totalSolids = elementArray[2] + elementArray[5] + elementArray[6];
+        //oxygen + neon
+        someGases = elementArray[3] + elementArray[4];
     }
 
     //layer generation for cross sections
@@ -65,7 +69,8 @@ public class PlanetInfo : MonoBehaviour {
     //else - two layers
     //sizes of layers
     // if one layer then size is 1
-    //if three layers, inner layer 
+    //if three layers, inner layer is 1- ratio of solids 
+
     void CrossSection(){
         if (totalSolids == 0 || (total - totalSolids) == 0)
         {
@@ -88,43 +93,51 @@ public class PlanetInfo : MonoBehaviour {
     }
     //dynamically change element ratio
     public void AddElement(int planetIndex){
-        if (total < 100)
+        if (total < 150)
         {
             //hydrogen
-            if (elementArray[planetIndex] == 0)
+            if (planetIndex == 0)
             {
                 if (hydrogen < 40)
                     hydrogen++;
+                elementArray[0] = hydrogen;
+
             }//helium
-            else if (elementArray[planetIndex] == 1)
+            else if (planetIndex == 1)
             {
                 if (helium < 30)
                     helium++;
+                elementArray[1] = helium;
             }//carbon
-            else if (elementArray[planetIndex] == 2)
+            else if (planetIndex == 2)
             {
                 if (carbon < 20)
                     carbon++;
+                elementArray[2] = carbon;
             }//oxygen
-            else if (elementArray[planetIndex] == 3)
+            else if (planetIndex == 3)
             {
                 if (oxygen < 20)
                     oxygen++;
+                elementArray[3] = oxygen;
             }//neon
-            else if (elementArray[planetIndex] == 4)
+            else if (planetIndex == 4)
             {
                 if (neon < 10)
                     neon++;
+                elementArray[4] = neon;
             }//silicon
-            else if (elementArray[planetIndex] == 5)
+            else if (planetIndex == 5)
             {
                 if (silicon < 20)
                     silicon++;
+                elementArray[5] = silicon;
             }//iron
-            else if (elementArray[planetIndex] == 6)
+            else if (planetIndex == 6)
             {
                 if (iron < 20)
                     iron++;
+                elementArray[6] = iron;
             }
             else
             {
@@ -138,40 +151,47 @@ public class PlanetInfo : MonoBehaviour {
     public void SubtractElement(int planetIndex)
     {
         //hydrogen
-        if (elementArray[planetIndex] == 0)
+        if (planetIndex == 0)
         {
-            if (hydrogen > 10)
+            if (hydrogen > 1)
                 hydrogen--;
+            elementArray[0] = hydrogen;
         }//helium
-        else if (elementArray[planetIndex] == 1)
+        else if (planetIndex == 1)
         {
-            if (helium > 5)
+            if (helium > 0)
                 helium--;
+            elementArray[1] = helium;
         }//carbon
-        else if (elementArray[planetIndex] == 2)
+        else if (planetIndex == 2)
         {
-            if (carbon > 1)
+            if (carbon > 0)
                 carbon--;
+            elementArray[2] = carbon;
         }//oxygen
-        else if (elementArray[planetIndex] == 3)
+        else if (planetIndex == 3)
         {
-            if (oxygen > 1)
+            if (oxygen > 0)
                 oxygen--;
+            elementArray[3] = oxygen;
         }//neon
-        else if (elementArray[planetIndex] == 4)
+        else if (planetIndex== 4)
         {
-            if (neon > 1)
+            if (neon > 0)
                 neon--;
+            elementArray[4] = neon;
         }//silicon
-        else if (elementArray[planetIndex] == 5)
+        else if (planetIndex == 5)
         {
             if (silicon > 0)
                 silicon--;
+            elementArray[5] = silicon;
         }//iron
-        else if (elementArray[planetIndex] == 6)
+        else if (planetIndex == 6)
         {
             if (iron > 0)
                 iron--;
+            elementArray[6] = iron;
         }
         else
        {
