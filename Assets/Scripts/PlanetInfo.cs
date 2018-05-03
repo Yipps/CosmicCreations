@@ -87,7 +87,7 @@ public class PlanetInfo : MonoBehaviour {
         }
     }
     //dynamically change element ratio
-    void AddElement(int planetIndex){
+    public void AddElement(int planetIndex){
         if (total < 100)
         {
             //hydrogen
@@ -135,7 +135,7 @@ public class PlanetInfo : MonoBehaviour {
         CrossSection();
     }
 
-    void SubtractElement(int planetIndex)
+    public void SubtractElement(int planetIndex)
     {
         //hydrogen
         if (elementArray[planetIndex] == 0)
