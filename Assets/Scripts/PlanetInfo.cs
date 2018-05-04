@@ -20,7 +20,7 @@ public class PlanetInfo : MonoBehaviour {
     public int someGases;
 
 
-    public int[] layerSizes = new int[3];
+    public float[] layerSizes = new float[3];
 
     public float radius;
     public float mass;
