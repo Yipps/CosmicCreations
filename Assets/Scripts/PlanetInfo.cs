@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlanetInfo : MonoBehaviour {
     public int[] elementArray = new int[7];
+    //set the values in the array as well when the Start method is called
     public int hydrogen = 25;
     public int helium = 20;
     public int carbon = 15;
@@ -12,6 +13,7 @@ public class PlanetInfo : MonoBehaviour {
     public int neon = 5;
     public int silicon = 10;
     public int iron = 10;
+
     public bool atmosphere = false;
 
     public int total;
@@ -29,6 +31,17 @@ public class PlanetInfo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        elementArray[0] = hydrogen;
+        elementArray[1] = helium;
+        elementArray[2] = carbon;
+        elementArray[3] = oxygen;
+        elementArray[4] = neon;
+        elementArray[5] = silicon;
+        elementArray[6] = iron;
+
+        //need to call at start once to initialize the layers at 
+        ProcessElements();
+        CrossSection();
 	}
 	
 	// Update is called once per frame
