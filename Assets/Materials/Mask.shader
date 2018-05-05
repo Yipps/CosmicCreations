@@ -1,6 +1,6 @@
 ﻿Shader "Custom/InvisibleMask" {
   SubShader {
-    // draw after all opaque objects (queue = 2001):
+    // draw after all opaque objects (queue = 3001):
     Tags { "Queue"="Transparency+1" }
     Pass {
       Blend Zero One // keep the image behind it
