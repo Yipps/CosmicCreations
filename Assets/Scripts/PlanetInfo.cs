@@ -17,7 +17,7 @@ public class PlanetInfo : MonoBehaviour {
     public bool atmosphere = false;
 
     public int total;
-    public int layers;
+    public int layers = 1;
     public int totalSolids;
     public int someGases;
 
@@ -38,6 +38,10 @@ public class PlanetInfo : MonoBehaviour {
         elementArray[4] = neon;
         elementArray[5] = silicon;
         elementArray[6] = iron;
+
+        layerSizes[0] = 1;
+        layerSizes[1] = 0;
+        layerSizes[2] = 0;
 
         //need to call at start once to initialize the layers at 
         ProcessElements();
@@ -88,20 +92,23 @@ public class PlanetInfo : MonoBehaviour {
         if (totalSolids == 0 || (total - totalSolids) == 0)
         {
             layers = 1;
-            layerSizes[0] = 1; 
+            layerSizes[0] = 1;
+            layerSizes[1] = 0;
+            layerSizes[2] = 0;
         }
-        else if ((totalSolids / total) * 100 < 30)
+        else if (((float)totalSolids / total) * 100 < 30)
         {
             layers = 3;
-            layerSizes[0] = 1 - (totalSolids/total); 
-            layerSizes[1] = 1 - (someGases/total); 
-            layerSizes[2] = 1 - (layerSizes[0] + layerSizes[1]);  
+            layerSizes[0] = 1 - ((float)totalSolids/total); 
+            layerSizes[1] = 1 - ((float)someGases/total); 
+            layerSizes[2] = 1 - ((float)layerSizes[0] + layerSizes[1]);  
         } 
         else
         {
             layers = 2;
             layerSizes[0] = totalSolids/total; 
-            layerSizes[1] = 1 - layerSizes[0]; 
+            layerSizes[1] = 1 - layerSizes[0];
+            layerSizes[2] = 0;
         }
     }
     //dynamically change element ratio
@@ -161,56 +168,56 @@ public class PlanetInfo : MonoBehaviour {
         CrossSection();
     }
 
-    public void SubtractElement(int planetIndex)
-    {
-        //hydrogen
-        if (planetIndex == 0)
-        {
-            if (hydrogen > 1)
-                hydrogen--;
-            elementArray[0] = hydrogen;
-        }//helium
-        else if (planetIndex == 1)
-        {
-            if (helium > 0)
-                helium--;
-            elementArray[1] = helium;
-        }//carbon
-        else if (planetIndex == 2)
-        {
-            if (carbon > 0)
-                carbon--;
-            elementArray[2] = carbon;
-        }//oxygen
-        else if (planetIndex == 3)
-        {
-            if (oxygen > 0)
-                oxygen--;
-            elementArray[3] = oxygen;
-        }//neon
-        else if (planetIndex== 4)
-        {
-            if (neon > 0)
-                neon--;
-            elementArray[4] = neon;
-        }//silicon
-        else if (planetIndex == 5)
-        {
-            if (silicon > 0)
-                silicon--;
-            elementArray[5] = silicon;
-        }//iron
-        else if (planetIndex == 6)
-        {
-            if (iron > 0)
-                iron--;
-            elementArray[6] = iron;
-        }
-        else
-       {
-            Debug.Log("this should be impossible");
-        }
-        ProcessElements();
-        CrossSection();
-    }
+    //public void SubtractElement(int planetIndex)
+    //{
+    //    //hydrogen
+    //    if (planetIndex == 0)
+    //    {
+    //        if (hydrogen > 1)
+    //            hydrogen--;
+    //        elementArray[0] = hydrogen;
+    //    }//helium
+    //    else if (planetIndex == 1)
+    //    {
+    //        if (helium > 0)
+    //            helium--;
+    //        elementArray[1] = helium;
+    //    }//carbon
+    //    else if (planetIndex == 2)
+    //    {
+    //        if (carbon > 0)
+    //            carbon--;
+    //        elementArray[2] = carbon;
+    //    }//oxygen
+    //    else if (planetIndex == 3)
+    //    {
+    //        if (oxygen > 0)
+    //            oxygen--;
+    //        elementArray[3] = oxygen;
+    //    }//neon
+    //    else if (planetIndex== 4)
+    //    {
+    //        if (neon > 0)
+    //            neon--;
+    //        elementArray[4] = neon;
+    //    }//silicon
+    //    else if (planetIndex == 5)
+    //    {
+    //        if (silicon > 0)
+    //            silicon--;
+    //        elementArray[5] = silicon;
+    //    }//iron
+    //    else if (planetIndex == 6)
+    //    {
+    //        if (iron > 0)
+    //            iron--;
+    //        elementArray[6] = iron;
+    //    }
+    //    else
+    //   {
+    //        Debug.Log("this should be impossible");
+    //    }
+    //    ProcessElements();
+    //    CrossSection();
+    //}
 }
