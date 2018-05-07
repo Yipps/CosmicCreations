@@ -8,10 +8,10 @@ public class PlanetInfo : MonoBehaviour {
     //set the values in the array as well when the Start method is called
     public int hydrogen = 25;
     public int helium = 20;
-    public int carbon = 15;
+    public int carbon = 10;
     public int oxygen = 15;
     public int neon = 5;
-    public int silicon = 10;
+    public int silicon = 5;
     public int iron = 10;
 
     public bool atmosphere = false;
@@ -100,7 +100,7 @@ public class PlanetInfo : MonoBehaviour {
         {
             layers = 3;
             layerSizes[0] = 1 - ((float)totalSolids/total); 
-            layerSizes[1] = 1 - ((float)someGases/total); 
+            layerSizes[1] = ((float)someGases/total); 
             layerSizes[2] = 1 - ((float)layerSizes[0] + layerSizes[1]);  
         } 
         else
