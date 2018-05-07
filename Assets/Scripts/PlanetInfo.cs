@@ -106,8 +106,8 @@ public class PlanetInfo : MonoBehaviour {
         else
         {
             layers = 2;
-            layerSizes[0] = totalSolids/total; 
-            layerSizes[1] = 1 - layerSizes[0];
+            layerSizes[0] = (float) totalSolids/total; 
+            layerSizes[1] = (float) 1 - layerSizes[0];
             layerSizes[2] = 0;
         }
     }
