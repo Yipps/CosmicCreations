@@ -6,13 +6,13 @@ using UnityEngine;
 public class PlanetInfo : MonoBehaviour {
     public int[] elementArray = new int[7];
     //set the values in the array as well when the Start method is called
-    public int hydrogen = 25;
-    public int helium = 20;
-    public int carbon = 10;
-    public int oxygen = 15;
-    public int neon = 5;
-    public int silicon = 5;
-    public int iron = 10;
+    public int hydrogen;
+    public int helium;
+    public int carbon;
+    public int oxygen;
+    public int neon;
+    public int silicon;
+    public int iron;
 
     public bool atmosphere = false;
 
@@ -31,6 +31,7 @@ public class PlanetInfo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        generatePlanet();
         elementArray[0] = hydrogen;
         elementArray[1] = helium;
         elementArray[2] = carbon;
@@ -226,5 +227,15 @@ public class PlanetInfo : MonoBehaviour {
     {
         GUI.Label(new Rect(100, 50, 500, 20), "% Solid" + ((float)totalSolids/total).ToString() );
         GUI.Label(new Rect(100, 80, 500, 20), "% SomeGas" + ((float)someGases/total).ToString());
+    }
+
+    public void generatePlanet(){
+        hydrogen = Random.Range(1, 40);
+        helium = Random.Range(0, 30);
+        carbon = Random.Range(0, 20);
+        oxygen = Random.Range(0, 20);
+        neon = Random.Range(0, 10);
+        silicon = Random.Range(0, 20);
+        iron = Random.Range(0, 20);
     }
 }
