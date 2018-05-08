@@ -19,33 +19,33 @@ public class Elements : MonoBehaviour {
 	}
 
     void getInfo(PlanetInfo info) {
-        if (info.hydrogen != 0)
+        if (info.elementArray[0] != 0)
         {
-            elementTextbox.text += "H " + info.hydrogen + "\n";
+            elementTextbox.text += "H " + info.elementArray[1] + "\n";
         }
-        if (info.helium != 0)
+        if (info.elementArray[1] != 0)
         {
-            elementTextbox.text += "He " + info.helium + "\n";
+            elementTextbox.text += "He " + info.elementArray[1] + "\n";
         }
-        if (info.carbon != 0)
+        if (info.elementArray[2] != 0)
         {
-            elementTextbox.text += "C " + info.carbon + "\n";
+            elementTextbox.text += "C " + info.elementArray[2] + "\n";
         }
-        if (info.iron != 0)
+        if (info.elementArray[3] != 0)
         {
-            elementTextbox.text += "Fe " + info.iron + "\n";
+            elementTextbox.text += "O " + info.elementArray[3] + "\n";
         }
-        if (info.oxygen != 0)
+        if (info.elementArray[4] != 0)
         {
-            elementTextbox.text += "O " + info.oxygen + "\n";
+            elementTextbox.text += "Ne " + info.elementArray[4] + "\n";
         }
-        if (info.neon != 0)
+        if (info.elementArray[5] != 0)
         {
-            elementTextbox.text += "Ne " + info.neon + "\n";
+            elementTextbox.text += "Si " + info.elementArray[5] + "\n";
         }
-        if (info.silicon != 0)
+        if (info.elementArray[6] != 0)
         {
-            elementTextbox.text += "Si " + info.silicon + "\n";
+            elementTextbox.text += "Fe " + info.elementArray[6] + "\n";
         }
     }
 }
