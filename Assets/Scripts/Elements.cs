@@ -21,7 +21,7 @@ public class Elements : MonoBehaviour {
     void getInfo(PlanetInfo info) {
         if (info.elementArray[0] != 0)
         {
-            elementTextbox.text += "H " + info.elementArray[1] + "\n";
+            elementTextbox.text += "H " + info.elementArray[0] + "\n";
         }
         if (info.elementArray[1] != 0)
         {
