@@ -30,6 +30,8 @@ public class InteractionGUI : MonoBehaviour {
             rightHand.color = Color.red;
     }
 
+
+    //Updates interactions icons based on hand tracking
     public void UpdateInteraction()
     {
         if (interactionModeInfo.currentMode == InteractionMode.Inactive)

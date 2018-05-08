@@ -114,12 +114,6 @@ public class PlanetController : MonoBehaviour {
         mask.transform.position = new Vector3(xPos, mask.transform.position.y, mask.transform.position.z);
     }
 
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(10, 10, 200, 20), InteractionModeInfo.currentMode.ToString());
-        GUI.Label(new Rect(10, 20, 100, 100), "" + (int)(1.0f / Time.smoothDeltaTime));
-    }
-
     public void ScrollElement()
     {
         if (!isInElementCoroutine)

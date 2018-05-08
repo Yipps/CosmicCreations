@@ -49,7 +49,7 @@ public class PlanetInfo : MonoBehaviour {
         //expand(radius);
         //Rotate();
         distFromSun = DistFromSun();
-        GetComponent<Renderer>().material.color = targetColor; 
+        GetComponent<Renderer>().material.color = Color.Lerp(GetComponent<Renderer>().material.color,targetColor,Time.deltaTime/4); 
 	}
 
     //makes the planet larger/smaller
@@ -204,12 +204,6 @@ public class PlanetInfo : MonoBehaviour {
         ProcessElements();
         SetColor();
         CrossSection();
-    }
-
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(100, 50, 500, 20), "% Solid" + ((float)totalSolids/total).ToString() );
-        GUI.Label(new Rect(100, 80, 500, 20), "% SomeGas" + ((float)someGases/total).ToString());
     }
 
     //randomizes element composition when new planets are setup
