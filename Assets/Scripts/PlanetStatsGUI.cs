@@ -24,19 +24,19 @@ public class PlanetStatsGUI : MonoBehaviour {
         planetStats.text = "";
 
             if (newPlanet.elementArray[0] != 0)
-                planetStats.text += "H : " + ((float)newPlanet.hydrogen / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "H : " + ((float)newPlanet.elementArray[0] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
             if (newPlanet.elementArray[1] != 0)
-                planetStats.text += "He: " + ((float)newPlanet.helium / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "He: " + ((float)newPlanet.elementArray[1] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
             if (newPlanet.elementArray[2] != 0)
-                planetStats.text += "C : " + ((float)newPlanet.carbon / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "C : " + ((float)newPlanet.elementArray[2] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
             if (newPlanet.elementArray[3] != 0)
-                planetStats.text += "O : " + ((float)newPlanet.oxygen / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "O : " + ((float)newPlanet.elementArray[3] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
             if (newPlanet.elementArray[4] != 0)
-                planetStats.text += "Ne : " + ((float)newPlanet.neon / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "Ne : " + ((float)newPlanet.elementArray[4] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
             if (newPlanet.elementArray[5] != 0)
-                planetStats.text += "Si: " + ((float)newPlanet.silicon / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "Si: " + ((float)newPlanet.elementArray[5] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
             if (newPlanet.elementArray[6] != 0)
-                planetStats.text += "Fe: " + ((float)newPlanet.iron / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "Fe: " + ((float)newPlanet.elementArray[6] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
 
         //List<int> elementsRanked = new List<int>(newPlanet.elementArray);
 
@@ -62,18 +62,18 @@ public class PlanetStatsGUI : MonoBehaviour {
     private void PrintElement(int index)
     {
         if (index == 0)
-            planetStats.text += "H : " + ((float)newPlanet.hydrogen / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "H : " + ((float)newPlanet.elementArray[0] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
         else if (index == 1)
-            planetStats.text += "He: " + ((float)newPlanet.helium / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "He: " + ((float)newPlanet.elementArray[1] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
         else if (index == 2)
-            planetStats.text += "C : " + ((float)newPlanet.carbon / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "C : " + ((float)newPlanet.elementArray[2] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
         else if (index == 3)
-            planetStats.text += "O : " + ((float)newPlanet.oxygen / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "O : " + ((float)newPlanet.elementArray[3] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
         else if (index == 4)
-            planetStats.text += "Ne : " + ((float)newPlanet.neon / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "Ne : " + ((float)newPlanet.elementArray[4] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
         else if (index == 5)
-            planetStats.text += "Si: " + ((float)newPlanet.silicon / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "Si: " + ((float)newPlanet.elementArray[5] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
         else if (index == 6)
-            planetStats.text += "Fe: " + ((float)newPlanet.iron / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            planetStats.text += "Fe: " + ((float)newPlanet.elementArray[6] / newPlanet.total * 100).ToString("f1") + "%" + "\n";
     }
 }
