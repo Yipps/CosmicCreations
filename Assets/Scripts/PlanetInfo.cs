@@ -51,7 +51,7 @@ public class PlanetInfo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //expand(radius);
-        Rotate();
+        //Rotate();
         distFromSun = DistFromSun();
 	}
 
@@ -99,16 +99,16 @@ public class PlanetInfo : MonoBehaviour {
         else if (((float)totalSolids / total) * 100 < 30)
         {
             layers = 3;
-            layerSizes[0] = 1 - ((float)totalSolids/total);
-            layerSizes[1] = ((float)someGases / total);
-            layerSizes[2] = 1 - ((float)layerSizes[0] + layerSizes[1]);  
+            layerSizes[0] = ((float)totalSolids/total);
+            layerSizes[1] = 1 - ((float)someGases / total);
+            layerSizes[2] = 1f;
         } 
         else
         {
             layers = 2;
-            layerSizes[0] = (float) totalSolids/total; 
-            layerSizes[1] = (float) 1 - layerSizes[0];
-            layerSizes[2] = 0;
+            layerSizes[0] = (float) totalSolids/total;
+            layerSizes[1] = 0f;
+            layerSizes[2] = 1f;
         }
     }
     //dynamically change element ratio
@@ -219,5 +219,12 @@ public class PlanetInfo : MonoBehaviour {
         }
         ProcessElements();
         CrossSection();
+
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(100, 50, 500, 20), "% Solid" + ((float)totalSolids/total).ToString() );
+        GUI.Label(new Rect(100, 80, 500, 20), "% SomeGas" + ((float)someGases/total).ToString());
     }
 }

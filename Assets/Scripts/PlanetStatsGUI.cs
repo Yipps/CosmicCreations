@@ -21,24 +21,41 @@ public class PlanetStatsGUI : MonoBehaviour {
 
     public void UpdateStats()
     {
-        List<int> elementsRanked = new List<int>(newPlanet.elementArray);
+        planetStats.text = "";
 
-        int max = 1;
-        int maxIndex = 0;
-        while (max != 0)
-        {
-            for (int i = 0; i < elementsRanked.Count; i++)
-            {
-                if (elementsRanked[i] > max)
-                {
-                    max = elementsRanked[i];
-                    maxIndex = i;
-                }
-            }
+            if (newPlanet.elementArray[0] != 0)
+                planetStats.text += "H : " + ((float)newPlanet.hydrogen / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            if (newPlanet.elementArray[1] != 0)
+                planetStats.text += "He: " + ((float)newPlanet.helium / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            if (newPlanet.elementArray[2] != 0)
+                planetStats.text += "C : " + ((float)newPlanet.carbon / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            if (newPlanet.elementArray[3] != 0)
+                planetStats.text += "O : " + ((float)newPlanet.oxygen / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            if (newPlanet.elementArray[4] != 0)
+                planetStats.text += "Ne : " + ((float)newPlanet.neon / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            if (newPlanet.elementArray[5] != 0)
+                planetStats.text += "Si: " + ((float)newPlanet.silicon / newPlanet.total * 100).ToString("f1") + "%" + "\n";
+            if (newPlanet.elementArray[6] != 0)
+                planetStats.text += "Fe: " + ((float)newPlanet.iron / newPlanet.total * 100).ToString("f1") + "%" + "\n";
 
-            PrintElement(maxIndex);
-            elementsRanked[maxIndex] = 0;
-        }
+        //List<int> elementsRanked = new List<int>(newPlanet.elementArray);
+
+        //int max = 1;
+        //int maxIndex = 0;
+        //while (max != 0)
+        //{
+        //    for (int i = 0; i < elementsRanked.Count; i++)
+        //    {
+        //        if (elementsRanked[i] > max)
+        //        {
+        //            max = elementsRanked[i];
+        //            maxIndex = i;
+        //        }
+        //    }
+
+        //    PrintElement(maxIndex);
+        //    elementsRanked[maxIndex] = 0;
+        //}
 
     }
 

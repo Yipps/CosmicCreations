@@ -13,12 +13,14 @@ public class PlanetController : MonoBehaviour {
     public Transform rotateTransform;
     public Transform mask;
     public SO_InteractionMode InteractionModeInfo;
+    public ElementGUI elementGUI;
     public GameEvent InteractionModeChange;
     public GameEvent ScrollElementEvent;
     public GameEvent AddElementEvent;
 
     public bool isLeftHandTracking { get; set; }
     public bool isRightHandTracking { get; set; }
+    public bool isEditingElements { get; set; }
     public bool isAddingElements { get; set; }
 
     private InteractionMode previousMode;
@@ -40,6 +42,8 @@ public class PlanetController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         InteractionModeInfo.currentMode = InteractionMode.Inactive;
+        isEditingElements = true;
+        isAddingElements = true;
 	}
 	
 	// Update is called once per frame
@@ -50,8 +54,16 @@ public class PlanetController : MonoBehaviour {
             UpdateMask();
         else if (InteractionModeInfo.currentMode == InteractionMode.ElementAdding)
         {
-            if (isAddingElements)
-                AddElement();
+            if (isEditingElements)
+            {
+                if(isAddingElements)
+                    AddElement();
+                else
+                {
+                    RemoveElement();
+                }
+            }
+                
             else
             {
                 ScrollElement();
@@ -120,6 +132,12 @@ public class PlanetController : MonoBehaviour {
             StartCoroutine(AddElementCoroutine());
     }
 
+    public void RemoveElement()
+    {
+        if (!isInElementCoroutine)
+            StartCoroutine(RemoveElementCoroutine());
+    }
+
     public IEnumerator ScrollElementCoroutine()
     {
         isInElementCoroutine = true;
@@ -133,7 +151,18 @@ public class PlanetController : MonoBehaviour {
     {
         isInElementCoroutine = true;
         AddElementEvent.Raise();
+        newPlanet.AddElement(elementGUI.selectedElementIndex);
         Debug.Log("Raised Add element event");
+        yield return new WaitForSeconds(0.5f);
+        isInElementCoroutine = false;
+    }
+
+    public IEnumerator RemoveElementCoroutine()
+    {
+        isInElementCoroutine = true;
+        AddElementEvent.Raise();
+        newPlanet.SubtractElement(elementGUI.selectedElementIndex);
+        Debug.Log("Raised remove element event");
         yield return new WaitForSeconds(0.5f);
         isInElementCoroutine = false;
     }
