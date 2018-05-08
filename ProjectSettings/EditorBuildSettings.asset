@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Solar System.unity
+    guid: e8338aa3db7dc954dbf3878427441513
+  - enabled: 1
+    path: Assets/Planet Creation Scene.unity
+    guid: f96d8f27c3e2cd040bbda4b0dd576837

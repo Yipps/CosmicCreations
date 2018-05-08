@@ -9,6 +9,8 @@ public class InteractionGUI : MonoBehaviour {
     public Image rightHand;
     public Text interaction;
 
+    public Image[] interactions;
+
     public PlanetController controls;
     public SO_InteractionMode interactionModeInfo;
 
@@ -30,6 +32,32 @@ public class InteractionGUI : MonoBehaviour {
 
     public void UpdateInteraction()
     {
-        interaction.text = interactionModeInfo.currentMode.ToString();
+        if (interactionModeInfo.currentMode == InteractionMode.Inactive)
+        {
+            DeactiveAllImages();
+            interactions[0].gameObject.SetActive(true);
+        }else if (interactionModeInfo.currentMode == InteractionMode.CrossSection)
+        {
+            DeactiveAllImages();
+            interactions[1].gameObject.SetActive(true);
+        }
+        else if (interactionModeInfo.currentMode == InteractionMode.Scaling)
+        {
+            DeactiveAllImages();
+            interactions[2].gameObject.SetActive(true);
+        }
+        else if (interactionModeInfo.currentMode == InteractionMode.ElementAdding)
+        {
+            DeactiveAllImages();
+            interactions[3].gameObject.SetActive(true);
+        }
+    }
+
+    private void DeactiveAllImages()
+    {
+        foreach (Image i in interactions)
+        {
+            i.gameObject.SetActive(false);
+        }
     }
 }
